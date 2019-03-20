@@ -1,0 +1,5 @@
+{
+  "ClientKeystorePath": "/var/lib/pod-manager/client.jks",
+  "ServerKeystorePath": "/var/lib/pod-manager/server.jks",
+  "ServerCertificateVerificationEnabled": true
+}

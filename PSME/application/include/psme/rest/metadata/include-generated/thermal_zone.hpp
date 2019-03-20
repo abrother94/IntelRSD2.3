@@ -1,0 +1,93 @@
+#ifndef PSME_REST_METADATA_THERMAL_ZONE_HPP
+#define PSME_REST_METADATA_THERMAL_ZONE_HPP
+
+#include <string>
+
+namespace psme {
+namespace rest {
+namespace metadata {
+
+static const std::string ThermalZone_XML =
+R"Xy+Z*aF--(<?xml version="1.0" encoding="UTF-8"?>
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+  <edmx:Reference Uri="/redfish/v1/metadata/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/metadata/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/metadata/RedfishExtensions.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/metadata/Resource.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/metadata/PhysicalContext.xml">
+    <edmx:Include Namespace="PhysicalContext.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/metadata/Redundancy.xml">
+    <edmx:Include Namespace="Redundancy"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/metadata/RackLocation.xml">
+    <edmx:Include Namespace="RackLocation"/>
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ThermalZone.v1_0_0">
+
+      <EntityType Name="ThermalZone" BaseType="Resource.v1_0_0.Resource">
+        <Annotation Term="Redfish.Deprecated"
+                    String="Entity type will be removed in the future and functionality will be provided in a different way"/>
+
+        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="RackLocation" Type="RackLocation.RackLocation"/>
+        <Property Name="Presence" Type="Edm.String"/>
+        <Property Name="DesiredSpeedPWM" Type="Edm.Decimal"/>
+        <Property Name="DesiredSpeedRPM" Type="Edm.Decimal"/>
+        <Property Name="MaxFansSupported" Type="Edm.Int64"/>
+        <Property Name="NumberOfFansPresent" Type="Edm.Int64"/>
+        <Property Name="VolumetricAirflow" Type="Edm.Decimal"/>
+        <Property Name="Temperatures" Type="Collection(ThermalZone.v1_0_0.TemperatureSensor)" Nullable="false"/>
+        <Property Name="Fans" Type="Collection(ThermalZone.v1_0_0.Fan)" Nullable="false"/>
+        <Property Name="Actions" Type="ThermalZone.v1_0_0.Actions" Nullable="false"/>
+        <Property Name="Links" Type="ThermalZone.v1_0_0.Links" Nullable="false"/>
+
+      </EntityType>
+
+      <ComplexType Name="TemperatureSensor">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Name" Type="Edm.String"/>
+        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="ReadingCelsius" Type="Edm.Decimal"/>
+        <Property Name="PhysicalContext" Type="PhysicalContext.v1_0_0.PhysicalContext"/>
+      </ComplexType>
+
+      <ComplexType Name="Fan">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Name" Type="Edm.String"/>
+        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="ReadingRPM" Type="Edm.Decimal"/>
+        <Property Name="RackLocation" Type="RackLocation.RackLocation"/>
+      </ComplexType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      </ComplexType>
+
+      <ComplexType Name="Links">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      </ComplexType>
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+)Xy+Z*aF--";
+
+} /* metadata */
+} /* rest */
+} /* psme */
+
+
+#endif /* PSME_REST_METADATA_THERMAL_ZONE_HPP */
